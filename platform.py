@@ -43,11 +43,11 @@ class AtmelavrPlatform(PlatformBase):
             "upload_protocol",
             self.board_config(variables.get("board")).get(
                 "upload.protocol", ""))
-        disabled_tool = "tool-micronucleus"
+        disabled_tools = ["tool-micronucleus", "tool-dwdebug"]
         required_tool = ""
 
-        if upload_protocol == "micronucleus":
-            disabled_tool = "tool-avrdude"
+        if upload_protocol in ["micronucleus", "dwdebug"]:
+            disabled_tools = ["tool-avrdude"]
 
         if "fuses" in targets:
             required_tool = "tool-avrdude"
@@ -55,8 +55,9 @@ class AtmelavrPlatform(PlatformBase):
         if required_tool in self.packages:
             self.packages[required_tool]['optional'] = False
 
-        if disabled_tool in self.packages and disabled_tool != required_tool:
-            del self.packages[disabled_tool]
+        for disabled_tool in disabled_tools:
+            if disabled_tool in self.packages and disabled_tool != required_tool:
+                del self.packages[disabled_tool]
 
         return super(AtmelavrPlatform, self).configure_default_packages(
             variables, targets)

@@ -184,6 +184,17 @@ if upload_protocol == "micronucleus":
     )
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
+elif upload_protocol == "dwdebug":
+    target_firm = target_elf
+    env.Replace(
+        UPLOADER="dwdebug",
+        UPLOADERFLAGS=[
+        ],
+        UPLOADCMD="$UPLOADER l $SOURCES , qr"
+    )
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+
+
 elif upload_protocol == "custom":
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
