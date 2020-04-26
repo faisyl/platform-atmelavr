@@ -10,7 +10,7 @@ To enable debug via PlatformIO's Unified Platform, set `upload_protocol`,
 
 ```
 [env:attiny85]
-platform = atmelavr
+platform = https://github.com/faisyl/platform-atmelavr.git
 board = attiny85
 framework = arduino
 
