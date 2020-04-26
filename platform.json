@@ -16,7 +16,8 @@
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json",
-    "https://raw.githubusercontent.com/eerimoq/simba/master/make/platformio/manifest.json"
+    "https://raw.githubusercontent.com/eerimoq/simba/master/make/platformio/manifest.json",
+    "https://github.com/faisyl/dwire-debug/releases/download/v0.2/manifest.json"
   ],
   "frameworks": {
     "arduino": {
@@ -111,7 +112,7 @@
     "tool-dwdebug": {
       "type": "uploader",
       "optional": true,
-      "version": "~1.0.0"
+      "version": ">=0.2"
     }
   }
 }
